@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>Timestamp</title>
+    <script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.17.0/moment.min.js"></script>	    
+</head>
+
+
+<script>
+
+    /* global $ */
+    /* global moment */
+
+$(document).ready(function() {
+    $('form').on('submit', function(e){
+	    e.preventDefault();        
+        $.ajax({
+           url: "https://timestamp-mientje.c9users.io/" +  $('#invoer').val(),
+           success: function(response) {
+			$('#antwoordServer').html("{ unix: " + response.unix + ", natural: " + response.natural + " }");  	
+			console.log("gelukt " + this.url);
+           },    
+           type: 'GET',
+           error: function(request, errorType, errorMessage) {
+               console.log("request " + this.request + " type " + this.errorType + " message " + this.errorMessage );
+           }
+       });
+   });
+});
+
+</script>
+<body>
+
+<h1>Timestamp Microservice</h1>
+
+<p>Enter a natural date or a timestamp in the input field or as a parameter added to the url. <br>
+You will need to separate days, month and year with a space , '-' or any other sign (except '/' in a url).</p>
+
+<form id="formulier">
+    <input type="text" id="invoer">
+    <button type="submit">Submit</button>
+</form>
+
+<p>Reply from the node server: </p>
+<p id="antwoordServer"></p> 
+
+
+</body>
+</html>
