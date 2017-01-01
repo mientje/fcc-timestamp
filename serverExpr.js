@@ -17,6 +17,11 @@ app.get('/:datumType', function(request, response) {
 	response.send(datum);       
 });
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', 'https://preview.c9users.io/:datumType');
+    next(); 
+});
+
 app.listen(process.env.PORT || 8000, process.env.IP, function(){
     console.log("er gebeurt wat");
 });
