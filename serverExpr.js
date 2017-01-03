@@ -8,10 +8,6 @@ app.get('/', function(request, response) {
 
 app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'https://preview.c9users.io');
-    next(); 
-});
-
-app.use(function(req, res, next) {
     res.setHeader('Access-Control-Allow-Origin', 'https://heroku-timestamp-microservice.herokuapp.com/');
     next(); 
 });
