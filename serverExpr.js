@@ -18,6 +18,6 @@ app.get('/:datumType', function(request, response) {
 	response.send(datum);       
 });
 
-app.listen(process.env.PORT || 8000, process.env.IP, function(){
+app.listen(process.env.PORT || 8000, function(){
     console.log("er gebeurt wat");
 });
