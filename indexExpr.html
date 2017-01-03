@@ -19,7 +19,8 @@ $(document).ready(function() {
     $('form').on('submit', function(e){
 	    e.preventDefault();        
         $.ajax({
-           url: "https://timestamp-mientje.c9users.io/" +  $('#invoer').val(),
+           // here is problem    
+           url: "https://heroku-timestamp-microservice.herokuapp.com/" +  $('#invoer').val(),
            success: function(response) {
 			$('#antwoordServer').html("{ unix: " + response.unix + ", natural: " + response.natural + " }");  	
 			console.log("gelukt " + this.url);
